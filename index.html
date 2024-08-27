@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hari's Portfolio</title>
+    <style>
+        /* Custom font */
+        @font-face {
+            font-family: 'Inter Display';
+            src: url('Inter Display-normal-400-100.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter Display', Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+            margin-right: 10px; /* Adjusted to move layout from the right */
+            position: relative;
+        }
+
+        @media(min-width: 768px) {
+            .container {
+                flex-direction: row;
+                text-align: left;
+                margin-right: 30px; /* Adjusted for larger screens */
+            }
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #000;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        @media(min-width: 768px) {
+            .header {
+                text-align: right;
+                padding-right: 20px;
+            }
+        }
+
+        .header a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .profile-pic {
+            width: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        @media(min-width: 768px) {
+            .profile-pic {
+                margin-bottom: 0;
+                margin-right: 20px;
+            }
+        }
+
+        .text-content {
+            max-width: 700px;
+            line-height: 1.5em;
+        }
+
+        .intro {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .background {
+            background: url('C:/Users/ZOKO/Desktop/HTML/background.jpg') no-repeat center center;
+            background-size: cover;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            filter: brightness(0.3); /* Darkens the background image */
+        }
+
+        /* Social Icons Vertical */
+        .social-icons-vertical {
+            position: absolute;
+            left: 10px; /* Adjust position from the left */
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .social-icons-vertical a {
+            background-color: #111; /* Background color of the icons */
+            border-radius: 50%; /* Makes the icon circular */
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            margin: 10px 0; /* Space between icons */
+            text-decoration: none;
+            font-size: 20px; /* Adjust size according to your need */
+        }
+
+        .social-icons-vertical a:hover {
+            background-color: #333; /* Change on hover */
+        }
+
+        .social-icons-vertical img {
+            width: 20px; /* Adjust icon size */
+            height: 20px;
+        }
+
+        /* New Scrollable Area */
+        .scrollable-area {
+            padding: 20px;
+            background-color: #000; /* Set to black */
+            color: #fff;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .scrollable-area h1 {
+            margin-bottom: 20px;
+        }
+
+        .scrollable-area .contact-info {
+            font-size: 1.2em;
+        }
+
+        .scrollable-area .contact-info p {
+            margin: 10px 0;
+        }
+
+        .scrollable-area a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .scrollable-area a:hover {
+            text-decoration: none;
+        }
+
+        /* About Section */
+        .about-section {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 40px 0;
+            background-color: #111;
+            color: #fff;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-content img {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+
+        .about-details {
+            max-width: 600px;
+            line-height: 1.6em;
+        }
+
+        .about-details h2 {
+            margin-bottom: 20px;
+            color: #00f;
+        }
+
+        .about-details ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .about-details li {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .about-details li::before {
+            content: "➤";
+            color: #00f;
+            margin-right: 10px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            padding: 40px 0;
+            background-color: #000;
+            border-top: 1px solid #444;
+        }
+
+        .stat-item {
+            text-align: center;
+            flex: 1;
+        }
+
+        .stat-item h2 {
+            font-size: 2.5em;
+            color: #00f;
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        /* Skills Section */
+        .skills-section {
+            padding: 60px 20px;
+            background-color: #f5f7fa;
+            color: #000;
+            text-align: center;
+        }
+
+        .skills-section h2 {
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .skills-section p {
+            font-size: 1.2em;
+            margin-bottom: 50px;
+        }
+
+        .skills-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .skill {
+            margin: 15px 0;
+            width: 45%;
+            text-align: left;
+        }
+
+        .skill-bar {
+            background-color: #e0e0e0;
+            border-radius: 20px;
+            padding: 5px;
+        }
+
+        .skill-bar div {
+            background-color: #007bff;
+            height: 20px;
+            border-radius: 20px;
+            text-align: right;
+            padding: 0 10px;
+            color: #fff;
+            line-height: 20px;
+        }
+
+        @media(max-width: 768px) {
+            .skill {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="header">
+        <a href="index.html">Home</a>
+        <a href="experience.html">Experience</a>
+        <a href="work.html">Work</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+    </div>
+    <div class="container">
+        <!-- Vertical Social Media Icons -->
+        <div class="social-icons-vertical">
+            <a href="https://x.com/HariHaran_IT_" target="_blank"><img src="C:\Users\ZOKO\Desktop\HTML\Twitter Logo On Black Background free icons designed by Google.jpeg" alt="Twitter" /></a>
+            <a href="https://facebook.com" target="_blank"><img src="C:\Users\ZOKO\Desktop\HTML\6 Ways to Grow Your Facebook Page Audience - Premier Online Updates, Latest Tech Trends.jpeg" alt="Facebook" /></a>
+            <a href="https://www.instagram.com/hari_.offli/profilecard/?igshid=YWRodmZrb29teGd5" target="_blank"><img src="C:\Users\ZOKO\Desktop\HTML\Homeschool Organizing That {really} Saves You Time _ To Sow A Seed.jpeg" alt="Instagram" /></a>
+            <a href="https://www.linkedin.com/in/hari-haran-2746602a1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><img src="C:\Users\ZOKO\Desktop\HTML\Premium Vector _ Square Linkedin Logo Isolated on White Background.jpeg" alt="LinkedIn" /></a>
+        </div>
+
+        <img src="C:/Users/ZOKO/Desktop/HTML/Hari.jpg" alt="Profile Picture" class="profile-pic">
+        <div class="text-content">
+            <div class="intro">
+                Hiya! I'm Hari - Your Media Manager, <br>
+                UI/UX Designer, Full Stack Developer.
+            </div>
+            <div class="description">
+                Having accumulated many years of experience as an information technology specialist, my strength stems from formulating contemporary technology approaches that boost business growth and simplify operations. I have acquired expertise across various domains such as software engineering, network management, cybersecurity, cloud technology, and beyond. My established track record attests to my ability in guiding projects from their embryonic phase to implementation.
+            </div>
+        </div>
+    </div>
+    <!-- Skills Section -->
+    <div class="skills-section">
+        <h2>Skills</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        
+        <div class="skills-container">
+            <div class="skill">
+                <span>HTML</span>
+                <div class="skill-bar">
+                    <div style="width: 90%;">90%</div>
+                </div>
+            </div>
+            <div class="skill">
+                <span>CSS</span>
+                <div class="skill-bar">
+                    <div style="width: 85%;">85%</div>
+                </div>
+            </div>
+            <div class="skill">
+                <span>JavaScript</span>
+                <div class="skill-bar">
+                    <div style="width: 75%;">75%</div>
+                </div>
+            </div>
+            <div class="skill">
+                <span>React</span>
+                <div class="skill-bar">
+                    <div style="width: 80%;">80%</div>
+                </div>
+            </div>
+            <div class="skill">
+                <span>Node.js</span>
+                <div class="skill-bar">
+                    <div style="width: 70%;">70%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="scrollable-area">
+        <h1>Contact</h1>
+        <div class="contact-info">
+            <p>Email: kanimozhisdha@gmail.com</p>
+            <p>Phone: 8778592640</p>
+            <p><a href="https://www.linkedin.com/in/kanimozhi-sdharan/">LinkedIn</a></p>
+        </div>
+    </div>
+</body>
+</html>
